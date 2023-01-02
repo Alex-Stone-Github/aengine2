@@ -41,10 +41,10 @@ impl RenderManager {
         const DETAIL: usize = 30;
         for progress in 0..DETAIL {
             let percent = (progress as f64) / (DETAIL as f64);
-            let offx = ((x2-x1) as f64 * percent) as isize;
-            let offy = ((y2-y1) as f64 * percent) as isize;
-            let _ = self.set_point((x1 as isize +offx) as usize,
-                                   (y1 as isize+offy) as usize, value);
+            let offx = ((x2 as isize - x1 as isize) as f64 * percent) as isize;
+            let offy = ((y2 as isize - y1 as isize) as f64 * percent) as isize;
+            let _ = self.set_point((x1 as isize + offx) as usize,
+                                   (y1 as isize + offy) as usize, value);
         }
     }
     pub fn present(&self) {
